@@ -12,10 +12,21 @@ function App() {
     setSearchInput(value);
   };
 
+  async function getUser() {
+    try {
+      const { data } = await axios.get(
+        `https://api.github.com/users/${searchInput}`
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <PageHeader />
-      <SearchBar onChange={handleSearch} />
+      <SearchBar onChange={handleSearch} onClick={getUser} />
     </>
   );
 }

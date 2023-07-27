@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import axios from "axios";
 import PageHeader from "./components/PageHeader/PageHeader";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -16,7 +16,8 @@ function App() {
     setSearchInput(value);
   };
 
-  async function getUser() {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       setIsLoading(true);
       const { data } = await axios.get(
@@ -31,13 +32,17 @@ function App() {
       setIsLoading(false);
       setUser(null);
     }
-  }
+  };
 
   return (
     <>
       {isLoading && <div>Loading...</div>}
       <PageHeader />
-      <SearchBar onChange={handleSearch} onClick={getUser} errMsg={errMsg} />
+      <SearchBar
+        onChange={handleSearch}
+        onSubmit={handleSubmit}
+        errMsg={errMsg}
+      />
       {user !== null ? (
         <UserCard
           avatar_url={user.avatar_url}

@@ -10,6 +10,7 @@ const SearchBar: React.FC<SearchProps> = ({ onChange, onClick }) => {
   return (
     <div>
       <label htmlFor="search">Search</label>
+      {/* Search Icon Goes Here */}
       <input
         id="search"
         type="text"

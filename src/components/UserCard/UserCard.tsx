@@ -1,29 +1,29 @@
 import React from "react";
 
-type UserCardProps = {
-  avatarUrl: string;
+export interface UserCardProps {
+  avatar_url: string;
   name: string;
-  createdAt: string;
+  created_at: string;
   login: string;
   bio: string;
-};
+}
 
 const UserCard: React.FC<UserCardProps> = ({
-  avatarUrl,
+  avatar_url,
   name,
-  createdAt,
+  created_at,
   login,
   bio,
 }) => {
   return (
     <main>
-      <img src={avatarUrl} alt="user profile" />
+      <img src={avatar_url} alt="user profile" />
       <section>
         <div>
           <header>
             <h2>{name}</h2>
           </header>
-          <small>{createdAt}</small>
+          <small>{created_at}</small>
         </div>
         <small>{login}</small>
         <p>{bio}</p>

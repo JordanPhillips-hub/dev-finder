@@ -49,7 +49,14 @@ function App() {
           name={user.name}
           created_at={user.created_at}
           login={user.login}
-          bio={user.bio ? user.bio : "No User Bio"}
+          bio={user.bio}
+          public_repos={user.public_repos}
+          followers={user.followers}
+          following={user.following}
+          location={user.location}
+          twitter_username={user.twitter_username}
+          blog={user.blog}
+          company={user.company}
         />
       ) : (
         <div>Cannot find user</div>

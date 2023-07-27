@@ -1,15 +1,15 @@
 import React from "react";
-import { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 type SearchProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClick: () => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   errMsg: string;
 };
 
-const SearchBar: React.FC<SearchProps> = ({ onChange, onClick, errMsg }) => {
+const SearchBar: React.FC<SearchProps> = ({ onChange, onSubmit, errMsg }) => {
   return (
-    <div>
+    <form onSubmit={onSubmit}>
       <label htmlFor="search">Search</label>
       {/* Search Icon Goes Here */}
       <input
@@ -17,14 +17,14 @@ const SearchBar: React.FC<SearchProps> = ({ onChange, onClick, errMsg }) => {
         type="text"
         name="search"
         placeholder="Search..."
-        onChange={(e) => onChange(e)}
+        onChange={onChange}
       />
 
       <div>
         <small>{errMsg}</small>
-        <button onClick={onClick}>Search</button>
+        <button type="submit">Search</button>
       </div>
-    </div>
+    </form>
   );
 };
 

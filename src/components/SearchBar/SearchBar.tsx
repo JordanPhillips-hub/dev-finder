@@ -1,18 +1,25 @@
 import React from "react";
+import { ChangeEvent } from "react";
 
 type SearchProps = {
-  onClick: () => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SearchBar: React.FC<SearchProps> = ({ onClick }) => {
+const SearchBar: React.FC<SearchProps> = ({ onChange }) => {
   return (
     <div>
       <label htmlFor="search">Search</label>
-      <input id="search" type="text" name="search" placeholder="Search..." />
+      <input
+        id="search"
+        type="text"
+        name="search"
+        placeholder="Search..."
+        onChange={(e) => onChange(e)}
+      />
 
       <div>
         <small>No Results</small>
-        <button onClick={onClick}>Search</button>
+        <button>Search</button>
       </div>
     </div>
   );

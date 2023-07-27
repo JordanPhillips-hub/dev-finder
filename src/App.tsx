@@ -1,13 +1,20 @@
+import { ChangeEvent, useState } from "react";
 import PageHeader from "./components/PageHeader/PageHeader";
 import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
-  const handleSearch = () => {};
+  const [searchInput, setSearchInput] = useState<string | null>("");
+
+  const handleSearch = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(value);
+  };
 
   return (
     <>
       <PageHeader />
-      <SearchBar onClick={handleSearch} />
+      <SearchBar onChange={handleSearch} />
     </>
   );
 }

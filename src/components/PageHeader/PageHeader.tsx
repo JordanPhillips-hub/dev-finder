@@ -2,13 +2,13 @@ import React from "react";
 
 const PageHeader: React.FC = () => {
   return (
-    <div>
+    <header>
       <h1>devfinder</h1>
       <div>
         <span>Dark</span>
         {/* Moon Icon */}
       </div>
-    </div>
+    </header>
   );
 };
 

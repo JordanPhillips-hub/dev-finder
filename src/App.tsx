@@ -24,10 +24,10 @@ function App() {
   }
 
   return (
-    <>
+    <main>
       <PageHeader />
       <SearchBar onChange={handleSearch} onClick={getUser} />
-    </>
+    </main>
   );
 }
 

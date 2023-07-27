@@ -3,9 +3,10 @@ import { ChangeEvent } from "react";
 
 type SearchProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick: () => void;
 };
 
-const SearchBar: React.FC<SearchProps> = ({ onChange }) => {
+const SearchBar: React.FC<SearchProps> = ({ onChange, onClick }) => {
   return (
     <div>
       <label htmlFor="search">Search</label>
@@ -19,7 +20,7 @@ const SearchBar: React.FC<SearchProps> = ({ onChange }) => {
 
       <div>
         <small>No Results</small>
-        <button>Search</button>
+        <button onClick={onClick}>Search</button>
       </div>
     </div>
   );

@@ -13,28 +13,35 @@ const Contact: React.FC<ContactProps> = ({
   blog,
   company,
 }) => {
+  const contacts = [
+    [
+      { text: location, na: "Location Unavailable" },
+      { text: twitter_username, na: "Twitter Unavailable" },
+    ],
+    [
+      { text: blog, na: "Blog Unavailable" },
+      { text: company, na: "Company Unavailable" },
+    ],
+  ];
+
   return (
     <section>
       <div>
-        <div>
-          {/* icon */}
-          <small>{location ?? "Location Unavailable"}</small>
-        </div>
-        <div>
-          {/* icon */}
-          <small>{twitter_username ?? "Twitter Unavailable"}</small>
-        </div>
+        {contacts[0].map((contact, index) => (
+          <div key={index}>
+            {/* icon */}
+            <small>{contact.text ?? contact.na}</small>
+          </div>
+        ))}
       </div>
 
       <div>
-        <div>
-          {/* icon */}
-          <small>{blog ?? "Blog Unavailable"}</small>
-        </div>
-        <div>
-          {/* icon */}
-          <small>{company ?? "Company Unavailable"}</small>
-        </div>
+        {contacts[1].map((contact, index) => (
+          <div key={index}>
+            {/* icon */}
+            <small>{contact.text ?? contact.na}</small>
+          </div>
+        ))}
       </div>
     </section>
   );

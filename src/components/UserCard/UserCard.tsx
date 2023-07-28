@@ -1,4 +1,7 @@
 import React from "react";
+import MainInfo from "./MainInfo/MainInfo";
+import Stats from "./Stats/Stats";
+import Contact from "./Contact/Contact";
 
 export interface UserCardProps {
   avatar_url: string;
@@ -31,56 +34,24 @@ const UserCard: React.FC<UserCardProps> = ({
 }) => {
   return (
     <main>
-      <img src={avatar_url} alt="user profile" />
-      <section>
-        <div>
-          <header>
-            <h2>{name}</h2>
-          </header>
-          <small>{created_at}</small>
-        </div>
-        <small>{login}</small>
-        <p>{bio ?? "No User Bio"}</p>
-      </section>
-
-      <section>
-        <div>
-          <small>Repos</small>
-          <p>{public_repos}</p>
-        </div>
-        <div>
-          <small>Followers</small>
-          <p>{followers}</p>
-        </div>
-        <div>
-          <small>Following</small>
-          <p>{following}</p>
-        </div>
-      </section>
-
-      <section>
-        <div>
-          <div>
-            {/* icon */}
-            <small>{location ?? "Location Unavailable"}</small>
-          </div>
-          <div>
-            {/* icon */}
-            <small>{twitter_username ?? "Twitter Unavailable"}</small>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            {/* icon */}
-            <small>{blog ?? "Blog Unavailable"}</small>
-          </div>
-          <div>
-            {/* icon */}
-            <small>{company ?? "Company Unavailable"}</small>
-          </div>
-        </div>
-      </section>
+      <MainInfo
+        avatar_url={avatar_url}
+        name={name}
+        created_at={created_at}
+        login={login}
+        bio={bio}
+      />
+      <Stats
+        public_repos={public_repos}
+        followers={followers}
+        following={following}
+      />
+      <Contact
+        location={location}
+        twitter_username={twitter_username}
+        blog={blog}
+        company={company}
+      />
     </main>
   );
 };

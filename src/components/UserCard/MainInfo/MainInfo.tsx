@@ -18,7 +18,6 @@ const MainInfo: React.FC<MainInfoProps> = ({
   return (
     <section>
       <img src={avatar_url} alt="user profile" />
-
       <div>
         <header>
           <h2>{name}</h2>

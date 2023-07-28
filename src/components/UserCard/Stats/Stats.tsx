@@ -1,5 +1,4 @@
 import React from "react";
-
 interface StatsProps {
   public_repos: number;
   followers: number;
@@ -11,20 +10,20 @@ const Stats: React.FC<StatsProps> = ({
   followers,
   following,
 }) => {
+  const stats = [
+    { text: "Repos", number: public_repos },
+    { text: "Followers", number: followers },
+    { text: "Following", number: following },
+  ];
+
   return (
     <section>
-      <div>
-        <small>Repos</small>
-        <p>{public_repos}</p>
-      </div>
-      <div>
-        <small>Followers</small>
-        <p>{followers}</p>
-      </div>
-      <div>
-        <small>Following</small>
-        <p>{following}</p>
-      </div>
+      {stats.map((stat, index) => (
+        <div key={index}>
+          <small>{stat.text}</small>
+          <p>{stat.number}</p>
+        </div>
+      ))}
     </section>
   );
 };

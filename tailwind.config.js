@@ -9,9 +9,6 @@ export default {
       colors: {
         lightestBlue: '#F6F8FF',
       },
-      maxWidth: {
-        '2.5xl': '45.625rem'
-      },
       fontSize: {
         '2.2xl': '1.625rem'
       }

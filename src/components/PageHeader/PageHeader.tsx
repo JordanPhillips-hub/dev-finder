@@ -1,4 +1,5 @@
 import React from "react";
+import { BsMoonFill } from "react-icons/bs";
 
 const PageHeader: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ const PageHeader: React.FC = () => {
       <h1>devfinder</h1>
       <div>
         <span>Dark</span>
-        {/* Moon Icon */}
+        <BsMoonFill />
       </div>
     </header>
   );

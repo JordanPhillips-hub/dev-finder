@@ -24,7 +24,7 @@ const MainInfo: React.FC<MainInfoProps> = ({
         </header>
         <small>{created_at}</small>
       </div>
-      <small>{login}</small>
+      <small>{login ?? "No User Login"}</small>
       <p>{bio ?? "No User Bio"}</p>
     </section>
   );

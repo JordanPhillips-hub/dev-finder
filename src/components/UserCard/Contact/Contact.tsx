@@ -1,4 +1,8 @@
 import React from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { FiLink } from "react-icons/fi";
+import { BsBuildingsFill } from "react-icons/bs";
 
 interface ContactProps {
   location: string;
@@ -15,12 +19,16 @@ const Contact: React.FC<ContactProps> = ({
 }) => {
   const contacts = [
     [
-      { text: location, na: "Location Unavailable" },
-      { text: twitter_username, na: "Twitter Unavailable" },
+      { text: location, icon: <FaMapMarkerAlt />, na: "Location Unavailable" },
+      {
+        text: twitter_username,
+        icon: <AiOutlineTwitter />,
+        na: "Twitter Unavailable",
+      },
     ],
     [
-      { text: blog, na: "Blog Unavailable" },
-      { text: company, na: "Company Unavailable" },
+      { text: blog, icon: <FiLink />, na: "Blog Unavailable" },
+      { text: company, icon: <BsBuildingsFill />, na: "Company Unavailable" },
     ],
   ];
 
@@ -29,7 +37,7 @@ const Contact: React.FC<ContactProps> = ({
       <div>
         {contacts[0].map((contact, index) => (
           <div key={index}>
-            {/* icon */}
+            {contact.icon}
             <small>{contact.text ?? contact.na}</small>
           </div>
         ))}
@@ -38,7 +46,7 @@ const Contact: React.FC<ContactProps> = ({
       <div>
         {contacts[1].map((contact, index) => (
           <div key={index}>
-            {/* icon */}
+            {contact.icon}
             <small>{contact.text ?? contact.na}</small>
           </div>
         ))}

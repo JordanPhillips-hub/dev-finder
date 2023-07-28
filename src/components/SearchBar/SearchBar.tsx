@@ -1,5 +1,5 @@
-import React from "react";
-import { ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
+import { GoSearch } from "react-icons/go";
 
 interface SearchProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,7 +11,7 @@ const SearchBar: React.FC<SearchProps> = ({ onChange, onSubmit, errMsg }) => {
   return (
     <form onSubmit={onSubmit}>
       <label htmlFor="search">Search</label>
-      {/* Search Icon Goes Here */}
+      <GoSearch />
       <input
         id="search"
         type="text"

@@ -1,11 +1,11 @@
 import React from "react";
 import { ChangeEvent, FormEvent } from "react";
 
-type SearchProps = {
+interface SearchProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   errMsg: string;
-};
+}
 
 const SearchBar: React.FC<SearchProps> = ({ onChange, onSubmit, errMsg }) => {
   return (

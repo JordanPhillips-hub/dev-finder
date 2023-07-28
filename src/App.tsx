@@ -28,15 +28,15 @@ function App() {
       setIsLoading(false);
       console.log(user);
     } catch (err) {
-      setErrMsg("User Not Found");
+      setErrMsg("No results");
       setIsLoading(false);
       setUser(null);
     }
   };
 
   return (
-    <div className="bg-lightestBlue font-mono h-screen">
-      <div className="max-w-2.5xl">
+    <div className="bg-lightestBlue font-mono h-screen grid place-items-center">
+      <div className="max-w-[45.625rem] w-[45.625rem]">
         {isLoading && <div>Loading...</div>}
         <PageHeader />
         <SearchBar

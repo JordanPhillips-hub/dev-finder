@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="bg-lightestBlue font-mono h-screen">
       {isLoading && <div>Loading...</div>}
       <PageHeader />
       <SearchBar
@@ -61,7 +61,7 @@ function App() {
       ) : (
         <div>Cannot find user</div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import Stats from "./Stats/Stats";
 import Contact from "./Contact/Contact";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 
 export interface UserCardProps {
   avatar_url: string;
@@ -18,7 +19,6 @@ export interface UserCardProps {
   company: string;
 }
 
-const windowWidth = window.innerWidth;
 const UserCard: React.FC<UserCardProps> = ({
   avatar_url,
   name,
@@ -33,6 +33,15 @@ const UserCard: React.FC<UserCardProps> = ({
   blog,
   company,
 }) => {
+  const windowWidth = useWindowWidth();
+  const renderUserBio = () => {
+    return (
+      <p className="text-slateBlue dark:text-white text-sm md:text-base">
+        {bio ?? "This profile has no bio"}
+      </p>
+    );
+  };
+
   return (
     <main className="bg-white dark:bg-deepIndigo w-[327px] md:w-[573px] lg:w-[730px] pt-8 pb-12 px-6 md:px-10 lg:px-12 rounded-2xl shadow-lg text-opacity-20">
       <div className="flex items-center gap-5 mb-8">
@@ -59,19 +68,11 @@ const UserCard: React.FC<UserCardProps> = ({
             {login ?? "No User Login"}
           </p>
 
-          {windowWidth >= 1280 && (
-            <p className="text-slateBlue dark:text-white text-sm md:text-base">
-              {bio ?? "This profile has no bio"}
-            </p>
-          )}
+          {windowWidth >= 1280 && renderUserBio()}
         </div>
       </div>
 
-      {windowWidth < 1280 && (
-        <p className="text-slateBlue dark:text-white mb-6 text-sm md:text-base">
-          {bio ?? "This profile has no bio"}
-        </p>
-      )}
+      {windowWidth < 1280 && renderUserBio()}
 
       <div className="lg:relative lg:left-[129px]">
         <Stats

@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchProps> = ({ onChange, onSubmit, errMsg }) => {
         name="search"
         onChange={onChange}
         placeholder="Search Github username..."
-        className="placeholder:text-slateBlue text-lg w-full ps-20 pr-2.5 pb-2.5 pt-2.5 rounded-2xl shadow-lg text-opacity-20 h-16 focus:outline-none"
+        className="placeholder:text-slateBlue placeholder:dark:text-white dark:bg-deepIndigo dark:text-white text-lg w-full ps-20 pr-2.5 pb-2.5 pt-2.5 rounded-2xl shadow-lg text-opacity-20 h-16 focus:outline-none"
       />
 
       <div className="absolute right-4 inset-y-2">

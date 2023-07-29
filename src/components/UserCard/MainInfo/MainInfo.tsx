@@ -18,14 +18,14 @@ const MainInfo: React.FC<MainInfoProps> = ({
     <section>
       <div className="flex items-center justify-between">
         <header>
-          <h2 className="text-slate-800 text-2xl font-bold">
+          <h2 className="text-midnightBlue dark:text-white text-2xl font-bold">
             {name ?? "No User Name"}
           </h2>
         </header>
-        <p className="text-slateBlue">{created_at}</p>
+        <p className="text-slateBlue dark:text-white">{created_at}</p>
       </div>
       <p className="text-electricBlue">{login ?? "No User Login"}</p>
-      <p className="text-slateBlue mt-5 mb-8">
+      <p className="text-slateBlue dark:text-white mt-5 mb-8">
         {bio ?? "This profile has no bio"}
       </p>
     </section>

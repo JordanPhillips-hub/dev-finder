@@ -33,7 +33,7 @@ const UserCard: React.FC<UserCardProps> = ({
   company,
 }) => {
   return (
-    <main className="bg-white flex gap-9 rounded-2xl shadow-lg text-opacity-20 p-12">
+    <main className="bg-white dark:bg-deepIndigo flex gap-9 rounded-2xl shadow-lg text-opacity-20 p-12">
       <img
         src={avatar_url}
         alt="user profile"

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import PageHeader from "./components/PageHeader/PageHeader";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -9,6 +9,21 @@ function App() {
   const [user, setUser] = useState<null | UserCardProps>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string>("");
+  const [theme, setTheme] = useState<boolean>(
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme);
+  }, [theme]);
+
+  const handleTheme = () => {
+    const newTheme = !theme;
+    setTheme(newTheme);
+    localStorage.theme = newTheme ? "dark" : "light";
+  };
 
   const handleSearch = ({
     target: { value },
@@ -35,10 +50,10 @@ function App() {
   };
 
   return (
-    <div className="bg-lightestBlue font-mono grid place-items-center h-screen ">
+    <div className=" bg-lightestBlue dark:bg-navy  font-mono grid place-items-center h-screen ">
       <div className="max-w-[45.625rem] w-[45.625rem]">
         {isLoading && <div>Loading...</div>}
-        <PageHeader />
+        <PageHeader onClick={handleTheme} />
         <SearchBar
           onChange={handleSearch}
           onSubmit={handleSubmit}
@@ -60,7 +75,7 @@ function App() {
             company={user.company}
           />
         ) : (
-          <div>Cannot find user</div>
+          <div className="dark:text-white">Cannot find user</div>
         )}
       </div>
     </div>

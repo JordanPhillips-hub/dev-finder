@@ -33,25 +33,32 @@ const UserCard: React.FC<UserCardProps> = ({
   company,
 }) => {
   return (
-    <main>
-      <MainInfo
-        avatar_url={avatar_url}
-        name={name}
-        created_at={created_at}
-        login={login}
-        bio={bio}
+    <main className="bg-white flex gap-9 rounded-2xl shadow-lg text-opacity-20 p-12">
+      <img
+        src={avatar_url}
+        alt="user profile"
+        className="h-[117px] rounded-full"
       />
-      <Stats
-        public_repos={public_repos}
-        followers={followers}
-        following={following}
-      />
-      <Contact
-        location={location}
-        twitter_username={twitter_username}
-        blog={blog}
-        company={company}
-      />
+      <div className="flex-1">
+        <MainInfo
+          avatar_url={avatar_url}
+          name={name}
+          created_at={created_at}
+          login={login}
+          bio={bio}
+        />
+        <Stats
+          public_repos={public_repos}
+          followers={followers}
+          following={following}
+        />
+        <Contact
+          location={location}
+          twitter_username={twitter_username}
+          blog={blog}
+          company={company}
+        />
+      </div>
     </main>
   );
 };

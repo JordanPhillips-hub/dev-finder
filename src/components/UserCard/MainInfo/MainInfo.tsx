@@ -9,7 +9,6 @@ interface MainInfoProps {
 }
 
 const MainInfo: React.FC<MainInfoProps> = ({
-  avatar_url,
   name,
   created_at,
   login,
@@ -17,15 +16,18 @@ const MainInfo: React.FC<MainInfoProps> = ({
 }) => {
   return (
     <section>
-      <img src={avatar_url} alt="user profile" />
-      <div>
+      <div className="flex items-center justify-between">
         <header>
-          <h2>{name}</h2>
+          <h2 className="text-slate-800 text-2xl font-bold">
+            {name ?? "No User Name"}
+          </h2>
         </header>
-        <small>{created_at}</small>
+        <p className="text-slateBlue">{created_at}</p>
       </div>
-      <small>{login ?? "No User Login"}</small>
-      <p>{bio ?? "No User Bio"}</p>
+      <p className="text-electricBlue">{login ?? "No User Login"}</p>
+      <p className="text-slateBlue mt-5 mb-8">
+        {bio ?? "This profile has no bio"}
+      </p>
     </section>
   );
 };

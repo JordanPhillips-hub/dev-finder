@@ -28,40 +28,42 @@ function App() {
       setIsLoading(false);
       console.log(user);
     } catch (err) {
-      setErrMsg("User Not Found");
+      setErrMsg("No results");
       setIsLoading(false);
       setUser(null);
     }
   };
 
   return (
-    <>
-      {isLoading && <div>Loading...</div>}
-      <PageHeader />
-      <SearchBar
-        onChange={handleSearch}
-        onSubmit={handleSubmit}
-        errMsg={errMsg}
-      />
-      {user !== null ? (
-        <UserCard
-          avatar_url={user.avatar_url}
-          name={user.name}
-          created_at={user.created_at}
-          login={user.login}
-          bio={user.bio}
-          public_repos={user.public_repos}
-          followers={user.followers}
-          following={user.following}
-          location={user.location}
-          twitter_username={user.twitter_username}
-          blog={user.blog}
-          company={user.company}
+    <div className="bg-lightestBlue font-mono grid place-items-center h-screen ">
+      <div className="max-w-[45.625rem] w-[45.625rem]">
+        {isLoading && <div>Loading...</div>}
+        <PageHeader />
+        <SearchBar
+          onChange={handleSearch}
+          onSubmit={handleSubmit}
+          errMsg={errMsg}
         />
-      ) : (
-        <div>Cannot find user</div>
-      )}
-    </>
+        {user !== null ? (
+          <UserCard
+            avatar_url={user.avatar_url}
+            name={user.name}
+            created_at={user.created_at}
+            login={user.login}
+            bio={user.bio}
+            public_repos={user.public_repos}
+            followers={user.followers}
+            following={user.following}
+            location={user.location}
+            twitter_username={user.twitter_username}
+            blog={user.blog}
+            company={user.company}
+          />
+        ) : (
+          <div>Cannot find user</div>
+        )}
+      </div>
+    </div>
   );
 }
 

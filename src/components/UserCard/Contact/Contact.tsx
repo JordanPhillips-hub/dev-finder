@@ -19,35 +19,41 @@ const Contact: React.FC<ContactProps> = ({
 }) => {
   const contacts = [
     [
-      { text: location, icon: <FaMapMarkerAlt />, na: "Location Unavailable" },
+      { text: location, icon: <FaMapMarkerAlt />, na: "Not Available" },
+      { text: blog, icon: <FiLink />, na: "Not Available" },
+    ],
+    [
       {
         text: twitter_username,
         icon: <AiOutlineTwitter />,
-        na: "Twitter Unavailable",
+        na: "Not Available",
       },
-    ],
-    [
-      { text: blog, icon: <FiLink />, na: "Blog Unavailable" },
-      { text: company, icon: <BsBuildingsFill />, na: "Company Unavailable" },
+      { text: company, icon: <BsBuildingsFill />, na: "Not Available" },
     ],
   ];
 
   return (
-    <section>
-      <div>
+    <section className="text-steelBlue flex gap-14 ">
+      <div className="flex-1">
         {contacts[0].map((contact, index) => (
-          <div key={index}>
-            {contact.icon}
-            <small>{contact.text ?? contact.na}</small>
+          <div
+            key={index}
+            className="text-midnightBlue flex gap-2.5 items-center mt-5"
+          >
+            <span className="w-4 ">{contact.icon}</span>
+            <p>{contact.text ?? contact.na}</p>
           </div>
         ))}
       </div>
 
-      <div>
+      <div className="flex-1 ">
         {contacts[1].map((contact, index) => (
-          <div key={index}>
-            {contact.icon}
-            <small>{contact.text ?? contact.na}</small>
+          <div
+            key={index}
+            className="text-midnightBlue flex gap-2.5 items-center mt-5"
+          >
+            <span className="w-4">{contact.icon}</span>
+            <p>{contact.text ?? contact.na}</p>
           </div>
         ))}
       </div>

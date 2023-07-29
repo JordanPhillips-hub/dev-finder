@@ -1,5 +1,5 @@
 import React from "react";
-
+import moment from "moment";
 interface MainInfoProps {
   avatar_url: string;
   name: string;
@@ -22,7 +22,9 @@ const MainInfo: React.FC<MainInfoProps> = ({
             {name ?? "No User Name"}
           </h2>
         </header>
-        <p className="text-slateBlue dark:text-white">{created_at}</p>
+        <p className="text-slateBlue dark:text-white">
+          {`Joined ${moment(created_at).format("ll")}`}
+        </p>
       </div>
       <p className="text-electricBlue">{login ?? "No User Login"}</p>
       <p className="text-slateBlue dark:text-white mt-5 mb-8">

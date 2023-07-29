@@ -74,9 +74,7 @@ function App() {
             blog={user.blog}
             company={user.company}
           />
-        ) : (
-          <div className="dark:text-white">Cannot find user</div>
-        )}
+        ) : null}
       </div>
     </div>
   );

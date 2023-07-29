@@ -33,7 +33,7 @@ const Contact: React.FC<ContactProps> = ({
   ];
 
   return (
-    <section className="text-steelBlue md:flex md:gap-16">
+    <section className="text-steelBlue md:flex md:gap-16 break-all">
       <div className="max-w-[230px] ">
         {contacts[0].map((contact, index) => (
           <div

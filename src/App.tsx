@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="bg-lightestBlue font-mono h-screen grid place-items-center">
+    <div className="bg-lightestBlue font-mono grid place-items-center h-screen ">
       <div className="max-w-[45.625rem] w-[45.625rem]">
         {isLoading && <div>Loading...</div>}
         <PageHeader />

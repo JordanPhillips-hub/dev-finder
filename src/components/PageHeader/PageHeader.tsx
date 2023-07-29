@@ -3,12 +3,12 @@ import { BsMoonFill } from "react-icons/bs";
 
 const PageHeader: React.FC = () => {
   return (
-    <header className="flex justify-between font-bold mb-8">
-      <h1 className="text-slate-800 text-2.2xl">devfinder</h1>
-      <div className="text-slate-500 flex items-center gap-4">
+    <header className="font-bold flex justify-between mb-8">
+      <h1 className="text-midnightBlue text-2.2xl">devfinder</h1>
+      <button className="text-slateBlue flex items-center gap-4">
         <span className=" text-sm tracking-wider">Dark</span>
         <BsMoonFill className="w-5 h-5" />
-      </div>
+      </button>
     </header>
   );
 };

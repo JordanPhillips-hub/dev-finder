@@ -17,6 +17,7 @@ export interface UserCardProps {
   blog: string;
   company: string;
 }
+const windowWidth = window.innerWidth;
 
 const UserCard: React.FC<UserCardProps> = ({
   avatar_url,
@@ -33,35 +34,46 @@ const UserCard: React.FC<UserCardProps> = ({
   company,
 }) => {
   return (
-    <main className="bg-white dark:bg-deepIndigo pt-8 pb-12 px-6 rounded-2xl shadow-lg text-opacity-20">
+    <main className="bg-white dark:bg-deepIndigo w-[327px] md:w-[573px] lg:w-[730px] pt-8 pb-12 px-6 md:px-10 lg:px-12 rounded-2xl shadow-lg text-opacity-20">
       <div className="flex items-center gap-5 mb-8">
         <img
           src={avatar_url}
           alt="user profile"
-          className="w-[22.6%] h-[22.6%] rounded-full"
+          className="w-[22.6%] h-[22.6%] max-w-[117px] rounded-full"
         />
 
-        <div>
-          <header>
-            <h2 className="text-midnightBlue dark:text-white font-bold text-base">
-              {name ?? "No User Name"}
-            </h2>
-          </header>
-          <p className="text-electricBlue text-sm">
+        <div className="w-full">
+          <div className="lg:flex lg:items-center lg:justify-between">
+            <header>
+              <h2 className="text-midnightBlue dark:text-white font-bold text-base md:text-2xl">
+                {name ?? "No User Name"}
+              </h2>
+            </header>
+
+            <p className="text-slateBlue dark:text-white text-sm md:text-base">
+              {`Joined ${moment(created_at).format("ll")}`}
+            </p>
+          </div>
+
+          <p className="text-electricBlue text-sm md:text-base lg:mb-5">
             {login ?? "No User Login"}
           </p>
 
-          <p className="text-slateBlue dark:text-white text-sm">
-            {`Joined ${moment(created_at).format("ll")}`}
-          </p>
+          {windowWidth >= 1280 && (
+            <p className="text-slateBlue dark:text-white text-sm md:text-base">
+              {bio ?? "This profile has no bio"}
+            </p>
+          )}
         </div>
       </div>
 
-      <p className="text-slateBlue dark:text-white mb-6">
-        {bio ?? "This profile has no bio"}
-      </p>
+      {windowWidth < 1280 && (
+        <p className="text-slateBlue dark:text-white mb-6 text-sm md:text-base">
+          {bio ?? "This profile has no bio"}
+        </p>
+      )}
 
-      <div>
+      <div className="lg:relative lg:left-[129px]">
         <Stats
           public_repos={public_repos}
           followers={followers}

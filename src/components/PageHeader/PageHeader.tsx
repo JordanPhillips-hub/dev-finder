@@ -13,7 +13,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ onClick }) => {
         onClick={onClick}
         className="text-slateBlue dark:text-white tracking-wider text-sm flex items-center gap-4"
       >
-        Dark
+        DARK
         <BsMoonFill />
       </button>
     </header>

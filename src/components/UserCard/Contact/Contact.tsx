@@ -33,15 +33,15 @@ const Contact: React.FC<ContactProps> = ({
   ];
 
   return (
-    <section className="text-steelBlue">
-      <div>
+    <section className="text-steelBlue md:flex md:gap-16">
+      <div className="max-w-[230px] ">
         {contacts[0].map((contact, index) => (
           <div
             key={index}
             className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4"
           >
             <span>{contact.icon}</span>
-            <p className="text-sm">{contact.text ?? contact.na}</p>
+            <p className="text-sm md:text-base">{contact.text ?? contact.na}</p>
           </div>
         ))}
       </div>
@@ -53,7 +53,7 @@ const Contact: React.FC<ContactProps> = ({
             className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4"
           >
             <span>{contact.icon}</span>
-            <p className="text-sm">{contact.text ?? contact.na}</p>
+            <p className="text-sm md:text-base">{contact.text ?? contact.na}</p>
           </div>
         ))}
       </div>

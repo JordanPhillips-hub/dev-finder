@@ -50,8 +50,8 @@ function App() {
   };
 
   return (
-    <div className=" bg-lightestBlue dark:bg-navy font-mono pt-8 px-8">
-      <div>
+    <div className=" bg-lightestBlue dark:bg-navy font-mono h-screen grid place-items-center">
+      <div className="max-w-[730px] min-w-[327px] md:min-w-[573px] lg:min-w-[730px]">
         {isLoading && <div>Loading...</div>}
         <PageHeader onClick={handleTheme} />
         <SearchBar

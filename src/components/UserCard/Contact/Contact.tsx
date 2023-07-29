@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FiLink } from "react-icons/fi";
@@ -41,7 +42,19 @@ const Contact: React.FC<ContactProps> = ({
             className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4"
           >
             <span>{contact.icon}</span>
-            <p className="text-sm md:text-base">{contact.text ?? contact.na}</p>
+            {contact.text === blog ? (
+              <Link
+                to={contact.text}
+                target="_blank"
+                className="text-sm md:text-base"
+              >
+                {contact.text ?? contact.na}
+              </Link>
+            ) : (
+              <p className="text-sm md:text-base">
+                {contact.text ?? contact.na}
+              </p>
+            )}
           </div>
         ))}
       </div>

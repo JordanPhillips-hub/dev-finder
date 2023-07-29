@@ -31,8 +31,7 @@ function App() {
     setSearchInput(value);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const getUserData = async (searchInput: string) => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
@@ -40,26 +39,30 @@ function App() {
       );
       setUser(data as UserCardProps);
       setErrMsg("");
-      setIsLoading(false);
-      console.log(user);
     } catch (err) {
       setErrMsg("No results");
-      setIsLoading(false);
       setUser(null);
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await getUserData(searchInput);
   };
 
   return (
     <div className=" bg-lightestBlue dark:bg-navy font-mono h-screen grid place-items-center">
       <div className="max-w-[730px] min-w-[327px] md:min-w-[573px] lg:min-w-[730px]">
-        {isLoading && <div>Loading...</div>}
         <PageHeader onClick={handleTheme} />
         <SearchBar
           onChange={handleSearch}
           onSubmit={handleSubmit}
           errMsg={errMsg}
         />
-        {user !== null ? (
+        {isLoading && <div>Loading...</div>}
+        {user ? (
           <UserCard
             avatar_url={user.avatar_url}
             name={user.name}

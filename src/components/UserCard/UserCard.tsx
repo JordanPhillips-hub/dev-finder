@@ -1,5 +1,5 @@
 import React from "react";
-import MainInfo from "./MainInfo/MainInfo";
+import moment from "moment";
 import Stats from "./Stats/Stats";
 import Contact from "./Contact/Contact";
 
@@ -33,20 +33,35 @@ const UserCard: React.FC<UserCardProps> = ({
   company,
 }) => {
   return (
-    <main className="bg-white dark:bg-deepIndigo flex gap-9 rounded-2xl shadow-lg text-opacity-20 p-12">
-      <img
-        src={avatar_url}
-        alt="user profile"
-        className="h-[117px] rounded-full"
-      />
-      <div className="flex-1">
-        <MainInfo
-          avatar_url={avatar_url}
-          name={name}
-          created_at={created_at}
-          login={login}
-          bio={bio}
+    <main className="bg-white dark:bg-deepIndigo pt-8 pb-12 px-6 rounded-2xl shadow-lg text-opacity-20">
+      <div className="flex items-center gap-5 mb-8">
+        <img
+          src={avatar_url}
+          alt="user profile"
+          className="w-[22.6%] h-[22.6%] rounded-full"
         />
+
+        <div>
+          <header>
+            <h2 className="text-midnightBlue dark:text-white font-bold text-base">
+              {name ?? "No User Name"}
+            </h2>
+          </header>
+          <p className="text-electricBlue text-sm">
+            {login ?? "No User Login"}
+          </p>
+
+          <p className="text-slateBlue dark:text-white text-sm">
+            {`Joined ${moment(created_at).format("ll")}`}
+          </p>
+        </div>
+      </div>
+
+      <p className="text-slateBlue dark:text-white mb-6">
+        {bio ?? "This profile has no bio"}
+      </p>
+
+      <div>
         <Stats
           public_repos={public_repos}
           followers={followers}

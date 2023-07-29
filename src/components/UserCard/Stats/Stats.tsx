@@ -17,13 +17,13 @@ const Stats: React.FC<StatsProps> = ({
   ];
 
   return (
-    <section className="bg-lightestBlue dark:bg-navy  flex justify-around rounded-lg py-4 mb-2.5">
+    <section className="bg-lightestBlue dark:bg-navy flex justify-between py-5 px-3.5 mb-6 rounded-lg">
       {stats.map((stat, index) => (
         <div key={index}>
-          <small className="text-steelBlue dark:text-white text-sm">
+          <small className="text-steelBlue dark:text-white text-xs">
             {stat.text}
           </small>
-          <p className="text-midnightBlue dark:text-white font-bold text-xl ">
+          <p className="text-midnightBlue dark:text-white text-base font-bold">
             {stat.number}
           </p>
         </div>

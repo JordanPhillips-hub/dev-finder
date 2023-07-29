@@ -17,8 +17,8 @@ export interface UserCardProps {
   blog: string;
   company: string;
 }
-const windowWidth = window.innerWidth;
 
+const windowWidth = window.innerWidth;
 const UserCard: React.FC<UserCardProps> = ({
   avatar_url,
   name,

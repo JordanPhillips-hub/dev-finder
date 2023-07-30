@@ -1,4 +1,10 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import axios from "axios";
 import PageHeader from "./components/PageHeader/PageHeader";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -19,17 +25,18 @@ function App() {
     document.documentElement.classList.toggle("dark", theme);
   }, [theme]);
 
-  const handleTheme = () => {
+  const handleTheme = useCallback(() => {
     const newTheme = !theme;
     setTheme(newTheme);
     localStorage.theme = newTheme ? "dark" : "light";
-  };
+  }, [theme]);
 
-  const handleSearch = ({
-    target: { value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(value);
-  };
+  const handleSearch = useCallback(
+    ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+      setSearchInput(value);
+    },
+    []
+  );
 
   const getUserData = async (searchInput: string) => {
     try {
@@ -47,10 +54,13 @@ function App() {
     }
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await getUserData(searchInput);
-  };
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      await getUserData(searchInput);
+    },
+    [searchInput]
+  );
 
   return (
     <div className=" bg-lightestBlue dark:bg-navy font-mono h-screen grid place-items-center">

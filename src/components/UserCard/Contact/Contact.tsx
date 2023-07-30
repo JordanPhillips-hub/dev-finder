@@ -43,7 +43,11 @@ const Contact: React.FC<ContactProps> = ({
       <div className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4">
         <span>{icon}</span>
         {text === blog ? (
-          <Link to={text} target="_blank" className="text-sm md:text-base">
+          <Link
+            to={text}
+            target="_blank"
+            className="text-sm md:text-base hover:text-electricBlue"
+          >
             {text ?? na}
           </Link>
         ) : (

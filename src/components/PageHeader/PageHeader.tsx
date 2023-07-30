@@ -1,11 +1,12 @@
 import React from "react";
-import { BsMoonFill } from "react-icons/bs";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
 interface PageHeaderProps {
   onClick: () => void;
+  theme: boolean;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ onClick }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ onClick, theme }) => {
   return (
     <header className="font-bold flex justify-between mb-9">
       <h1 className="text-midnightBlue dark:text-white text-2xl">devfinder</h1>
@@ -13,8 +14,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({ onClick }) => {
         onClick={onClick}
         className="text-slateBlue dark:text-white tracking-wider text-sm flex items-center gap-4"
       >
-        DARK
-        <BsMoonFill />
+        {theme ? "LIGHT" : "DARK"}
+        {theme ? <BsSunFill /> : <BsMoonFill />}
       </button>
     </header>
   );

@@ -5,6 +5,11 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { FiLink } from "react-icons/fi";
 import { BsBuildingsFill } from "react-icons/bs";
 
+interface ContactItem {
+  text: string;
+  icon: React.ReactElement;
+  na: string;
+}
 interface ContactProps {
   location: string;
   twitter_username: string;
@@ -18,7 +23,7 @@ const Contact: React.FC<ContactProps> = ({
   blog,
   company,
 }) => {
-  const contacts = [
+  const contacts: ContactItem[][] = [
     [
       { text: location, icon: <FaMapMarkerAlt />, na: "Not Available" },
       { text: blog, icon: <FiLink />, na: "Not Available" },
@@ -33,41 +38,32 @@ const Contact: React.FC<ContactProps> = ({
     ],
   ];
 
+  const RenderContactItem: React.FC<ContactItem> = ({ text, icon, na }) => {
+    return (
+      <div className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4">
+        <span>{icon}</span>
+        {text === blog ? (
+          <Link to={text} target="_blank" className="text-sm md:text-base">
+            {text ?? na}
+          </Link>
+        ) : (
+          <p className="text-sm md:text-base">{text ?? na}</p>
+        )}
+      </div>
+    );
+  };
+
   return (
     <section className="text-steelBlue md:flex md:gap-16 break-all">
-      <div className="max-w-[230px] ">
+      <div className="max-w-[230px]">
         {contacts[0].map((contact, index) => (
-          <div
-            key={index}
-            className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4"
-          >
-            <span>{contact.icon}</span>
-            {contact.text === blog ? (
-              <Link
-                to={contact.text}
-                target="_blank"
-                className="text-sm md:text-base"
-              >
-                {contact.text ?? contact.na}
-              </Link>
-            ) : (
-              <p className="text-sm md:text-base">
-                {contact.text ?? contact.na}
-              </p>
-            )}
-          </div>
+          <RenderContactItem key={index} {...contact} />
         ))}
       </div>
 
       <div>
         {contacts[1].map((contact, index) => (
-          <div
-            key={index}
-            className="text-midnightBlue dark:text-white flex items-center gap-5 mb-4"
-          >
-            <span>{contact.icon}</span>
-            <p className="text-sm md:text-base">{contact.text ?? contact.na}</p>
-          </div>
+          <RenderContactItem key={index} {...contact}></RenderContactItem>
         ))}
       </div>
     </section>

@@ -1,12 +1,12 @@
 import React from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
-interface PageHeaderProps {
+type Props = {
   onClick: () => void;
   theme: boolean;
-}
+};
 
-const PageHeader: React.FC<PageHeaderProps> = ({ onClick, theme }) => {
+const PageHeader: React.FC<Props> = ({ onClick, theme }) => {
   return (
     <header className="font-bold flex justify-between mb-9">
       <h1 className="text-midnightBlue dark:text-white text-2xl">devfinder</h1>

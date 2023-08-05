@@ -2,13 +2,13 @@ import React, { ChangeEvent, FormEvent } from "react";
 import { GoSearch } from "react-icons/go";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
-interface SearchProps {
+type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   errMsg: string;
-}
+};
 
-const SearchBar: React.FC<SearchProps> = ({ onChange, onSubmit, errMsg }) => {
+const SearchBar: React.FC<Props> = ({ onChange, onSubmit, errMsg }) => {
   const windowWidth = useWindowWidth();
   const renderErrMsg = () => {
     return <small className="text-red-500 text-xs font-bold">{errMsg}</small>;

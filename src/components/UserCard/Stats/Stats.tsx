@@ -1,15 +1,11 @@
 import React from "react";
-interface StatsProps {
+type Props = {
   public_repos: number;
   followers: number;
   following: number;
-}
+};
 
-const Stats: React.FC<StatsProps> = ({
-  public_repos,
-  followers,
-  following,
-}) => {
+const Stats: React.FC<Props> = ({ public_repos, followers, following }) => {
   const stats = [
     { text: "Repos", number: public_repos },
     { text: "Followers", number: followers },

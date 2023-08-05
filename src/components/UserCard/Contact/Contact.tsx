@@ -5,19 +5,20 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { FiLink } from "react-icons/fi";
 import { BsBuildingsFill } from "react-icons/bs";
 
-interface ContactItem {
-  text: string;
-  icon: React.ReactElement;
-  na: string;
-}
-interface ContactProps {
+type Props = {
   location: string;
   twitter_username: string;
   blog: string;
   company: string;
-}
+};
 
-const Contact: React.FC<ContactProps> = ({
+type ContactItem = {
+  text: string;
+  icon: React.ReactElement;
+  na: string;
+};
+
+const Contact: React.FC<Props> = ({
   location,
   twitter_username,
   blog,

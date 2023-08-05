@@ -4,7 +4,7 @@ import Stats from "./Stats/Stats";
 import Contact from "./Contact/Contact";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
-export interface UserCardProps {
+export type UserCardProps = {
   avatar_url: string;
   name: string;
   created_at: string;
@@ -17,7 +17,7 @@ export interface UserCardProps {
   twitter_username: string;
   blog: string;
   company: string;
-}
+};
 
 const UserCard: React.FC<UserCardProps> = ({
   avatar_url,

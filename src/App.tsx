@@ -72,22 +72,7 @@ function App() {
           onSubmit={handleSubmit}
           errMsg={errMsg}
         />
-        {user ? (
-          <UserCard
-            avatar_url={user.avatar_url}
-            name={user.name}
-            created_at={user.created_at}
-            login={user.login}
-            bio={user.bio}
-            public_repos={user.public_repos}
-            followers={user.followers}
-            following={user.following}
-            location={user.location}
-            twitter_username={user.twitter_username}
-            blog={user.blog}
-            company={user.company}
-          />
-        ) : null}
+        {user ? <UserCard {...user} /> : null}
       </div>
     </div>
   );

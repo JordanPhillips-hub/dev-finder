@@ -12,7 +12,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import UserCard, { UserCardProps } from "./components/UserCard/UserCard";
 
 function App() {
-  const input = useRef<HTMLInputElement | null>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
   const [user, setUser] = useState<null | UserCardProps>(null);
@@ -29,8 +29,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isInputFocused && input.current) {
-      input.current.focus();
+    if (isInputFocused && searchInputRef.current) {
+      searchInputRef.current.focus();
     }
   }, [isInputFocused, theme, user, errMsg]);
 
@@ -74,15 +74,14 @@ function App() {
     },
     [searchInput]
   );
-  console.log("App Rendered");
-  console.log(isInputFocused);
+
   return (
     <div className=" bg-lightestBlue dark:bg-navy font-mono h-screen grid place-items-center">
       <div className="max-w-[730px] min-w-[327px] md:min-w-[573px] lg:min-w-[730px]">
         <PageHeader onClick={handleTheme} theme={theme} />
         {isLoading && <div className="dark:text-white">Loading...</div>}
         <SearchBar
-          inputRef={input}
+          inputRef={searchInputRef}
           onChange={handleSearch}
           onSubmit={handleSubmit}
           errMsg={errMsg}

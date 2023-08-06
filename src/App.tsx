@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
   useCallback,
+  useRef,
 } from "react";
 import axios from "axios";
 import PageHeader from "./components/PageHeader/PageHeader";
@@ -11,6 +12,8 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import UserCard, { UserCardProps } from "./components/UserCard/UserCard";
 
 function App() {
+  const input = useRef<HTMLInputElement | null>(null);
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
   const [user, setUser] = useState<null | UserCardProps>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,6 +23,16 @@ function App() {
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
+
+  useEffect(() => {
+    setIsInputFocused(true);
+  }, []);
+
+  useEffect(() => {
+    if (isInputFocused && input.current) {
+      input.current.focus();
+    }
+  }, [isInputFocused, theme, user, errMsg]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme);
@@ -61,13 +74,15 @@ function App() {
     },
     [searchInput]
   );
-
+  console.log("App Rendered");
+  console.log(isInputFocused);
   return (
     <div className=" bg-lightestBlue dark:bg-navy font-mono h-screen grid place-items-center">
       <div className="max-w-[730px] min-w-[327px] md:min-w-[573px] lg:min-w-[730px]">
         <PageHeader onClick={handleTheme} theme={theme} />
         {isLoading && <div className="dark:text-white">Loading...</div>}
         <SearchBar
+          inputRef={input}
           onChange={handleSearch}
           onSubmit={handleSubmit}
           errMsg={errMsg}
